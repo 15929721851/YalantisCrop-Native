@@ -3,6 +3,7 @@ package com.yalantis.ucrop;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
@@ -28,6 +29,7 @@ import android.widget.TextView;
 import com.yalantis.ucrop.callback.BitmapCropCallback;
 import com.yalantis.ucrop.model.AspectRatio;
 import com.yalantis.ucrop.util.SelectedStateListDrawable;
+import com.yalantis.ucrop.util.StatusBarUtils;
 import com.yalantis.ucrop.view.CropImageView;
 import com.yalantis.ucrop.view.GestureCropImageView;
 import com.yalantis.ucrop.view.OverlayView;
@@ -427,6 +429,11 @@ public class UCropActivity extends AppCompatActivity {
             if (window != null) {
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.setStatusBarColor(color);
+            }
+            if (color== Color.parseColor("#ffffff")){
+                StatusBarUtils.setStatusBarDarkTheme(this, true);
+            }else {
+                StatusBarUtils.setStatusBarDarkTheme(this, false);
             }
         }
     }
